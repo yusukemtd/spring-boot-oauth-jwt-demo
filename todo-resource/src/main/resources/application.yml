@@ -1,0 +1,23 @@
+server:
+  port: 18082
+
+# authz server uri
+auth-server-uri: http://localhost:18081/uua
+
+mybatis:
+  type-aliases-package: com.example.resource.model
+
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+
+security:
+  oauth2:
+    client:
+      client-id: resource-server
+      client-secret: demo
+    resource:
+#      token-info-uri: ${auth-server-uri}/oauth/check_token
+      jwt:
+        key-uri: ${auth-server-uri}/oauth/token_key
+
